@@ -7,7 +7,7 @@ ENV LUAROCKS_VERSION="3.7.0"
 # Install build environment so C modules can be build directly using this image
 # without installing stuff before
 RUN set -ex \
-    && apk add --no-cache build-base \
+    && yum install -y build-base \
         m4 \
         bsd-compat-headers \
         openssl \
@@ -20,6 +20,7 @@ RUN set -ex \
         gcc \
         g++ \
         git \
+        zip \
     && wget -cO - https://luarocks.org/releases/luarocks-${LUAROCKS_VERSION}.tar.gz | \
         tar -xzf - \
     && cd luarocks-${LUAROCKS_VERSION} \
